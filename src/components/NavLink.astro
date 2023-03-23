@@ -1,0 +1,14 @@
+---
+const { href } = Astro.props;
+---
+
+<a
+  href={href}
+  draggable={false}
+  style={{
+    "-webkit-background-clip": "text",
+  }}
+  class="text-xl text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-blue hover:to-purple"
+>
+  <slot />
+</a>
