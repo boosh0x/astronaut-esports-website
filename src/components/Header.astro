@@ -1,0 +1,19 @@
+---
+import NavLink from "./NavLink.astro";
+---
+
+<header class="flex items-center justify-between p-8 fixed z-50 w-full">
+  <a href="/" draggable={false}>
+    <img
+      src="/logo.png"
+      alt="Astronaut Esports Logo"
+      class="w-16 h-16 select-none hover:scale-110 transition-transform duration-300"
+      draggable={false}
+    />
+  </a>
+  <nav class="flex gap-8 font-stargaze select-none">
+    <NavLink href="#teams">Teams</NavLink>
+    <NavLink href="#news">News</NavLink>
+    <NavLink href="#schedule">Schedule</NavLink>
+  </nav>
+</header>

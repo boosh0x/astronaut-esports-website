@@ -1,26 +1,22 @@
 ---
-import NavLink from "../components/NavLink.astro";
+import Background from "../components/Background";
+import Button from "../components/Button.astro";
+import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Astronaut Esports">
-  <header class="flex items-center justify-between p-8 fixed w-full">
-    <a href="/" draggable={false}>
-      <img
-        src="/logo.png"
-        alt="Astronaut Esports Logo"
-        class="w-16 h-16 select-none hover:scale-110 transition-transform duration-300"
-        draggable={false}
-      />
-    </a>
-    <nav class="flex gap-8 font-stargaze select-none">
-      <NavLink href="#teams">Teams</NavLink>
-      <NavLink href="#news">News</NavLink>
-      <NavLink href="#schedule">Schedule</NavLink>
-    </nav>
-  </header>
-  <div class="flex items-center justify-center h-screen bg-black">
-    <h1 class="font-xxix text-8xl text-white select-none">Astronaut Esports</h1>
+  <Header />
+  <div class="relative flex items-center justify-center h-screen bg-black">
+    <Background client:load />
+    <div class="z-10">
+      <h1 class="font-xxix text-8xl text-white select-none drop-shadow-2xl">
+        Astronaut Esports
+      </h1>
+    </div>
+    <div class="z-10 absolute bottom-32">
+      <Button>Jump in!</Button>
+    </div>
   </div>
   <div class="h-screen"></div>
 </Layout>
