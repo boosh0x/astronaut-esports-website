@@ -38,7 +38,7 @@ const { title } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <style>
+    <style is:global>
       @font-face {
         font-family: "Stargaze";
         src: url(/fonts/Stargaze.woff) format("Web Open Font Format");
@@ -54,6 +54,28 @@ const { title } = Astro.props;
       @font-face {
         font-family: "RobotoCondensed";
         src: url(/fonts/RobotoCondensed.ttf) format("TrueType");
+      }
+
+      .cut-corners {
+        --all: 0px;
+        -webkit-mask: linear-gradient(45deg, transparent 10px, #fff 0) bottom
+            left,
+          linear-gradient(-45deg, transparent 0 0, #fff 0) bottom right,
+          linear-gradient(135deg, transparent 0 0, #fff 0) top left,
+          linear-gradient(-135deg, transparent 0 10px, #fff 0) top right;
+        -webkit-mask-size: 50.5% 50.5%;
+        -webkit-mask-repeat: no-repeat;
+      }
+
+      .cut-corners-lg {
+        --all: 0px;
+        -webkit-mask: linear-gradient(45deg, transparent 16px, #fff 0) bottom
+            left,
+          linear-gradient(-45deg, transparent 0 0, #fff 0) bottom right,
+          linear-gradient(135deg, transparent 0 0, #fff 0) top left,
+          linear-gradient(-135deg, transparent 0 16px, #fff 0) top right;
+        -webkit-mask-size: 50.5% 50.5%;
+        -webkit-mask-repeat: no-repeat;
       }
     </style>
   </head>

@@ -2,7 +2,12 @@
 import NavLink from "./NavLink.astro";
 ---
 
-<header class="flex items-center justify-between p-8 fixed z-50 w-full">
+<header
+  style={{
+    "-webkit-background-clip": "text",
+  }}
+  class="flex items-center justify-between p-8 fixed bg-clip-text z-50 w-full bg-white"
+>
   <a href="/" draggable={false}>
     <img
       src="/logo.png"
@@ -11,7 +16,7 @@ import NavLink from "./NavLink.astro";
       draggable={false}
     />
   </a>
-  <nav class="flex gap-8 font-stargaze select-none">
+  <nav class="flex gap-8 font-stargaze select-none mix-blend-difference">
     <NavLink href="#teams">Teams</NavLink>
     <NavLink href="#news">News</NavLink>
     <NavLink href="#schedule">Schedule</NavLink>

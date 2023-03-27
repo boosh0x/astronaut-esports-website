@@ -2,12 +2,16 @@
 import Background from "../components/Background";
 import Button from "../components/Button.astro";
 import Header from "../components/Header.astro";
+import News from "../components/News";
+import Teams from "../components/Teams";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Astronaut Esports">
   <Header />
-  <div class="relative flex items-center justify-center h-screen bg-black">
+  <div
+    class="relative flex items-center justify-center h-screen bg-[url(/space.png)]"
+  >
     <Background client:load />
     <div class="z-10">
       <h1 class="font-xxix text-8xl text-white select-none drop-shadow-2xl">
@@ -18,5 +22,27 @@ import Layout from "../layouts/Layout.astro";
       <Button>Jump in!</Button>
     </div>
   </div>
-  <div class="h-screen"></div>
+  <div class="relative h-screen p-16 flex flex-col gap-16">
+    <div class="bg-white w-20 h-20 absolute -top-6 -left-8 rotate-[30deg]">
+    </div>
+    <div class="bg-black w-20 h-20 absolute -top-14 -right-6 rotate-[30deg]">
+    </div>
+    <Teams client:load />
+    <div class="flex flex-col gap-8">
+      <div class="flex items-center justify-between">
+        <h2 class="text-4xl font-xxix">NEWS</h2>
+        <Button>Read more</Button>
+      </div>
+      <News client:load />
+    </div>
+    <div class="flex items-center justify-between">
+      <h2 class="text-4xl font-xxix">SCHEDULE</h2>
+      <Button>See more</Button>
+    </div>
+    <div class="bg-black w-20 h-20 absolute -bottom-14 -left-8 rotate-[30deg]">
+    </div>
+    <div class="bg-white w-20 h-20 absolute -bottom-6 -right-8 rotate-[30deg]">
+    </div>
+  </div>
+  <footer class="bg-[url(/space.png)] h-96"></footer>
 </Layout>
