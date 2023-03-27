@@ -9,7 +9,7 @@ export default function Teams() {
   const [selectedTeam, setSelectedTeam] = useState(0);
 
   return (
-    <div className="flex items-center gap-8">
+    <div id="teams" className="flex items-center gap-8">
       <Button
         image="/space.png"
         selected={selectedTeam === 0}
