@@ -43,15 +43,15 @@ function Button(props: {
       onClick={() => props.onClick()}
       style={{
         backgroundImage: `url(${props.image})`,
-        filter: props.selected ? "grayscale(0)" : "grayscale(100%)",
+        filter: props.selected ? "grayscale(0)" : "",
       }}
-      className="text-white hover:grayscale-0 transition-all duration-300 text-2xl font-stargaze cursor-pointer select-none px-8 py-2 cut-corners bg-center bg-no-repeat bg-cover"
+      className="group text-white outline-none grayscale hover:grayscale-0 transition-all duration-300 text-2xl font-stargaze cursor-pointer select-none px-8 py-2 cut-corners bg-center bg-no-repeat bg-cover"
     >
       <p
         style={{
-          opacity: props.selected ? "1" : "0.6",
+          opacity: props.selected ? "1" : "",
         }}
-        className="transition-opacity duration-300"
+        className="opacity-[0.6] g group-hover:opacity-100 transition-opacity duration-300"
       >
         {props.children}
       </p>
