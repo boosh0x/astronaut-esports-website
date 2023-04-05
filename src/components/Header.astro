@@ -1,5 +1,5 @@
 ---
-import NavLink from "./NavLink.astro";
+import NavLink from "./NavLink";
 ---
 
 <header
@@ -17,8 +17,8 @@ import NavLink from "./NavLink.astro";
     />
   </a>
   <nav class="flex gap-8 font-stargaze select-none mix-blend-difference">
-    <NavLink href="#teams">Teams</NavLink>
-    <NavLink href="#news">News</NavLink>
-    <NavLink href="#schedule">Schedule</NavLink>
+    <NavLink href="#teams" client:load>Teams</NavLink>
+    <NavLink href="#news" client:load>News</NavLink>
+    <NavLink href="#schedule" client:load>Schedule</NavLink>
   </nav>
 </header>

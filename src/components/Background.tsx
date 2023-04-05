@@ -102,8 +102,14 @@ export default function Background() {
   return (
     <div className="absolute top-0 left-0 w-full h-screen">
       <Canvas>
-        <ambientLight intensity={0.3} />
-        <pointLight position={[25, 25, 10]} />
+        <ambientLight intensity={0.1} />
+        <pointLight position={[10, 20, 40]} color={"#ffffff"} />
+        <pointLight position={[80, 2, 10]} color={"#333AE3"} intensity={0.75} />
+        <pointLight
+          position={[-25, -25, 10]}
+          color={"#5D27E3"}
+          intensity={0.75}
+        />
         <Stars />
         <Suspense>
           <Quest />

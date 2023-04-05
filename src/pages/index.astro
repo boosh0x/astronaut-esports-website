@@ -24,6 +24,7 @@ import Layout from "../layouts/Layout.astro";
   </div>
   <div class="relative w-full h-screen pointer-events-none mb-10"></div>
   <div
+    id="content"
     class="relative bg-white //overflow-hidden h-screen p-16 flex flex-col gap-16"
   >
     <div class="bg-white w-20 h-20 absolute -top-6 -left-8 rotate-[30deg]">
@@ -42,11 +43,13 @@ import Layout from "../layouts/Layout.astro";
       </div>
       <News client:load />
     </div>
-    <div class="flex items-center justify-between">
-      <h2 id="schedule" class="text-4xl font-xxix select-none">SCHEDULE</h2>
-      <Button href="https://calendar.google.com/calendar/u/0/r">
-        See more
-      </Button>
+    <div class="flex flex-col gap-8">
+      <div class="flex items-center justify-between">
+        <h2 id="schedule" class="text-4xl font-xxix select-none">SCHEDULE</h2>
+        <Button href="https://calendar.google.com/calendar/u/0/r">
+          See more
+        </Button>
+      </div>
     </div>
   </div>
   <footer class="bg-[url(/space.png)] h-96"></footer>
