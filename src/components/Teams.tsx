@@ -1,27 +1,24 @@
-import { useState } from "react";
+import type { Team } from "../utils/fetchCache";
 
-export default function Teams() {
-  const teams = [
-    { name: "Echo VR", image: "/teams/echo-vr.png" },
-    { name: "Street Fighter", image: "/teams/street-fighter.png" },
-  ];
-
-  const [selectedTeam, setSelectedTeam] = useState(0);
-
+export default function Teams(props: {
+  teams: Team[];
+  selectedTeam: number;
+  setSelectedTeam: Function;
+}) {
   return (
     <div id="teams" className="flex items-center gap-8">
       <Button
         image="/space.png"
-        selected={selectedTeam === 0}
-        onClick={() => setSelectedTeam(0)}
+        selected={props.selectedTeam === 0}
+        onClick={() => props.setSelectedTeam(0)}
       >
         All
       </Button>
-      {teams.map((team, index) => (
+      {props.teams.map((team, index) => (
         <Button
           image={team.image}
-          selected={selectedTeam === index + 1}
-          onClick={() => setSelectedTeam(index + 1)}
+          selected={props.selectedTeam === index + 1}
+          onClick={() => props.setSelectedTeam(index + 1)}
         >
           {team.name}
         </Button>

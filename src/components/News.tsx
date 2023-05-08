@@ -1,21 +1,33 @@
-export default function News() {
+import type { Article, Team } from "../utils/fetchCache";
+import Button from "./Button";
+
+export default function News(props: {
+  teams: Team[];
+  news: Article[];
+  selectedTeam: number;
+}) {
   return (
-    <div className="grid grid-cols-5 gap-8">
-      <Article image="/teams/echo-vr.png" href="https://www.google.com">
-        Introducing our new Echo VR roster!
-      </Article>
-      <Article image="/teams/echo-vr.png" href="https://www.google.com">
-        Introducing our new Echo VR roster!
-      </Article>
-      <Article image="/teams/echo-vr.png" href="https://www.google.com">
-        Introducing our new Echo VR roster!
-      </Article>
-      <Article image="/teams/echo-vr.png" href="https://www.google.com">
-        Introducing our new Echo VR roster!
-      </Article>
-      <Article image="/teams/echo-vr.png" href="https://www.google.com">
-        Introducing our new Echo VR roster!
-      </Article>
+    <div className="flex flex-col gap-8">
+      <div className="flex items-center justify-between">
+        <h2 id="news" className="text-4xl font-xxix select-none">
+          NEWS
+        </h2>
+        <Button href="https://paragraph.xyz/">Read more</Button>
+      </div>
+      <div className="grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 gap-8">
+        {props.news.map((article) => (
+          <Article
+            key={article.id}
+            image={
+              props.teams.find((team) => team.id === article.game)?.image ||
+              "/space.png"
+            }
+            href={article.url}
+          >
+            {article.title}
+          </Article>
+        ))}
+      </div>
     </div>
   );
 }
@@ -23,6 +35,7 @@ export default function News() {
 function Article(props: { image: string; children: string; href: string }) {
   return (
     <a
+      key={props.href}
       href={props.href}
       target="_blank"
       rel="noopener noreferrer"

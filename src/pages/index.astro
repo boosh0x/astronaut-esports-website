@@ -1,10 +1,12 @@
 ---
 import Background from "../components/Background";
-import Button from "../components/Button.astro";
+import Button from "../components/Button";
+import Content from "../components/Content";
 import Header from "../components/Header.astro";
-import News from "../components/News";
-import Teams from "../components/Teams";
 import Layout from "../layouts/Layout.astro";
+import fetchCache from "../utils/fetchCache";
+
+export const { schedule, teams, news } = fetchCache();
 ---
 
 <Layout title="Astronaut Esports">
@@ -13,19 +15,14 @@ import Layout from "../layouts/Layout.astro";
     class="fixed top-0 w-full flex items-center justify-center h-screen bg-black"
   >
     <Background client:load />
-    <!-- <div class="z-10">
-      <h1 class="font-xxix text-8xl text-white select-none drop-shadow-2xl">
-        Astronaut Esports
-      </h1>
-    </div> -->
     <div class="z-10 absolute bottom-32">
-      <Button>Jump in!</Button>
+      <Button href="" client:load>Jump in!</Button>
     </div>
   </div>
   <div class="relative w-full h-screen pointer-events-none mb-10"></div>
   <div
     id="content"
-    class="relative bg-white //overflow-hidden h-screen p-16 flex flex-col gap-16"
+    class="relative bg-white //overflow-hidden p-16 flex flex-col gap-16"
   >
     <div class="bg-white w-20 h-20 absolute -top-6 -left-8 rotate-[30deg]">
     </div>
@@ -35,22 +32,7 @@ import Layout from "../layouts/Layout.astro";
     </div>
     <div class="bg-white w-20 h-20 absolute -bottom-6 -right-8 rotate-[30deg]">
     </div>
-    <Teams client:load />
-    <div class="flex flex-col gap-8">
-      <div class="flex items-center justify-between">
-        <h2 id="news" class="text-4xl font-xxix select-none">NEWS</h2>
-        <Button href="https://paragraph.xyz/">Read more</Button>
-      </div>
-      <News client:load />
-    </div>
-    <div class="flex flex-col gap-8">
-      <div class="flex items-center justify-between">
-        <h2 id="schedule" class="text-4xl font-xxix select-none">SCHEDULE</h2>
-        <Button href="https://calendar.google.com/calendar/u/0/r">
-          See more
-        </Button>
-      </div>
-    </div>
+    <Content client:load teams={teams} schedule={schedule} news={news} />
   </div>
-  <footer class="bg-[url(/space.png)] h-96"></footer>
+  <footer class="h-96"></footer>
 </Layout>

@@ -1,26 +1,31 @@
 {
-  "name": "",
+  "name": "astronaut-esports",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cache": "node ./scripts/cache.js",
+    "dev": "npm run cache && astro dev",
+    "build": "npm run cache && astro build && copyfiles cache/images/**/*.* dist"
   },
   "dependencies": {
     "@astrojs/react": "^2.1.0",
     "@astrojs/tailwind": "^3.1.1",
+    "@notionhq/client": "^2.2.4",
     "@react-three/drei": "^9.58.4",
     "@react-three/fiber": "^8.12.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/three": "^0.149.0",
     "astro": "^2.1.5",
+    "copyfiles": "^2.4.1",
+    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.2.7",
     "three": "^0.150.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.0"
   }
 }

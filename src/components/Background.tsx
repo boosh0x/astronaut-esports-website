@@ -82,7 +82,7 @@ function AstronautEsports() {
   const textGeometry = new TextGeometry("Astronaut Esports", {
     font: font,
     size: 0.5,
-    height: 0.05,
+    height: 0.02,
   });
 
   // Create a mesh with the text geometry

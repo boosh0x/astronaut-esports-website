@@ -1,9 +1,35 @@
 ---
-export interface Props {
+import fetchCache from "../utils/fetchCache";
+
+type Props = {
   title: string;
-}
+};
 
 const { title } = Astro.props;
+
+export const { metadata } = fetchCache();
+
+export const socials = {
+  twitter: "https://twitter.com/nounsesports",
+  discord: "https://discord.gg/nounsesports",
+  twitch: "https://twitch.tv/nounsesports",
+  youtube: "https://youtube.com/@nounsesports",
+};
+
+export const navigation = [
+  {
+    name: "Teams",
+    url: "#teams",
+  },
+  {
+    name: "News",
+    url: "#news",
+  },
+  {
+    name: "Schedule",
+    url: "#schedule",
+  },
+];
 ---
 
 <!DOCTYPE html>
