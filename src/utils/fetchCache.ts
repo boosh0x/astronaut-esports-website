@@ -24,7 +24,7 @@ export type Event = {
   };
 };
 
-export type Article = { id: string; title: string; game: string; url: string };
+export type Article = { id: string; title: string; image: string; url: string };
 
 export type Cache = {
   schedule: Event[];

@@ -3,6 +3,9 @@ const plugin = require("tailwindcss/plugin");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     fontFamily: {
       stargaze: ["Stargaze"],
@@ -26,6 +29,13 @@ module.exports = {
           color: "transparent",
           backgroundClip: "text",
           backgroundImage: "linear-gradient(to right, #333AE3, #5D27E3)",
+        },
+        ".scrollbar-hidden": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
         },
       });
     }),

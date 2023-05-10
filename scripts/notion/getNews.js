@@ -1,4 +1,5 @@
 import validateData from "../utils/validateData.js";
+import downloadImage from "../utils/downloadImage.js";
 
 export default async function getNews(notion) {
   const articles = [];
@@ -13,7 +14,7 @@ export default async function getNews(notion) {
     const article = validateData("article", {
       id: result.id,
       title: result.properties.Title.title[0]?.plain_text,
-      game: result.properties.Game.relation[0]?.id,
+      image: await downloadImage(result.properties.Image.files[0].file?.url),
       url: result.properties.URL?.url,
     });
 

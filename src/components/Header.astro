@@ -6,7 +6,7 @@ import NavLink from "./NavLink";
   style={{
     "-webkit-background-clip": "text",
   }}
-  class="flex items-center justify-between p-8 fixed bg-clip-text z-50 w-full bg-white"
+  class="flex items-center justify-between p-8 max-sm:p-6 fixed bg-clip-text z-50 w-full bg-white"
 >
   <a href="/" draggable={false}>
     <img
@@ -16,8 +16,10 @@ import NavLink from "./NavLink";
       draggable={false}
     />
   </a>
-  <nav class="flex gap-8 font-stargaze select-none mix-blend-difference">
-    <NavLink href="#teams" client:load>Teams</NavLink>
+  <nav class="flex gap-6 font-stargaze select-none mix-blend-difference">
+    <div class="max-[450px]:hidden">
+      <NavLink href="#teams" client:load>Teams</NavLink>
+    </div>
     <NavLink href="#news" client:load>News</NavLink>
     <NavLink href="#schedule" client:load>Schedule</NavLink>
   </nav>

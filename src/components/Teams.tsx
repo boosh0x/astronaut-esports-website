@@ -6,7 +6,10 @@ export default function Teams(props: {
   setSelectedTeam: Function;
 }) {
   return (
-    <div id="teams" className="flex items-center gap-8">
+    <div
+      id="teams"
+      className="flex items-center gap-8 overflow-x-scroll scrollbar-hidden"
+    >
       <Button
         image="/space.png"
         selected={props.selectedTeam === 0}
@@ -42,13 +45,13 @@ function Button(props: {
         backgroundImage: `url(${props.image})`,
         filter: props.selected ? "grayscale(0)" : "",
       }}
-      className="group text-white outline-none grayscale hover:grayscale-0 transition-all duration-300 text-2xl font-stargaze cursor-pointer select-none px-8 py-2 cut-corners bg-center bg-no-repeat bg-cover"
+      className="group text-white outline-none grayscale hover:grayscale-0 transition-all duration-300 text-2xl font-stargaze-stencil cursor-pointer select-none px-8 py-2 cut-corners bg-center bg-no-repeat bg-cover"
     >
       <p
         style={{
           opacity: props.selected ? "1" : "",
         }}
-        className="opacity-[0.6] g group-hover:opacity-100 transition-opacity duration-300"
+        className="opacity-[0.6] whitespace-nowrap group-hover:opacity-100 transition-opacity duration-300"
       >
         {props.children}
       </p>

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
@@ -7,14 +7,20 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { Suspense } from "react";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 
-function Quest() {
+function Quest(props: { hide: boolean }) {
   const gltf = useLoader(GLTFLoader, "/quest/scene.gltf");
 
   useFrame(() => {
     gltf.scene.rotation.y += 0.0002;
   });
 
-  return <primitive object={gltf.scene} rotation={[-0.75, 0.75, 0.75]} />;
+  return (
+    <primitive
+      visible={props.hide}
+      object={gltf.scene}
+      rotation={[-0.75, 0.75, 0.75]}
+    />
+  );
 }
 
 function Stars() {
@@ -76,7 +82,7 @@ function Stars() {
   );
 }
 
-function AstronautEsports() {
+function AstronautEsports(props: { hide: boolean }) {
   const font = useLoader(FontLoader, "/fonts/XXIX.json");
 
   const textGeometry = new TextGeometry("Astronaut Esports", {
@@ -95,27 +101,42 @@ function AstronautEsports() {
     />
   );
 
-  return <group>{textMesh}</group>;
+  return <group visible={props.hide}>{textMesh}</group>;
 }
 
 export default function Background() {
+  const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      const scrolledDistance = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      if (scrolledDistance > viewportHeight) {
+        setScrolledPastViewport(true);
+      } else setScrolledPastViewport(false);
+    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="absolute top-0 left-0 w-full h-screen">
-      <Canvas>
-        <ambientLight intensity={0.1} />
-        <pointLight position={[10, 20, 40]} color={"#ffffff"} />
-        <pointLight position={[80, 2, 10]} color={"#333AE3"} intensity={0.75} />
-        <pointLight
-          position={[-25, -25, 10]}
-          color={"#5D27E3"}
-          intensity={0.75}
-        />
-        <Stars />
-        <Suspense>
-          <Quest />
-          <AstronautEsports />
-        </Suspense>
-      </Canvas>
-    </div>
+    <Canvas className="absolute top-0 left-0 w-full h-screen">
+      <ambientLight intensity={0.1} />
+      <pointLight position={[10, 20, 40]} color={"#ffffff"} />
+      <pointLight position={[80, 2, 10]} color={"#333AE3"} intensity={0.75} />
+      <pointLight
+        position={[-25, -25, 10]}
+        color={"#5D27E3"}
+        intensity={0.75}
+      />
+      <Stars />
+      <Suspense>
+        <Quest hide={!scrolledPastViewport} />
+        <AstronautEsports hide={!scrolledPastViewport} />
+      </Suspense>
+    </Canvas>
   );
 }
