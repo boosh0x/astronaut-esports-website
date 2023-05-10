@@ -1,7 +1,6 @@
 # build output
 dist/
-cache/*
-cache/output.json
+cache/
 
 # generated types
 .astro/
