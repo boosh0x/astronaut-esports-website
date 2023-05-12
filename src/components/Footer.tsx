@@ -7,9 +7,8 @@ export default function Footer() {
 
   useEffect(() => {
     function handleScroll() {
-      const scrolledDistance = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      if (scrolledDistance > 320) {
+      const bounds = window.innerWidth > 640 ? 320 : 640;
+      if (window.scrollY > bounds) {
         setScrolledPastViewport(true);
       } else setScrolledPastViewport(false);
     }
@@ -21,7 +20,9 @@ export default function Footer() {
 
   return (
     <footer
-      style={{ display: scrolledPastViewport ? "flex" : "none" }}
+      style={{
+        display: scrolledPastViewport ? "flex" : "none",
+      }}
       className="fixed bottom-0 w-full h-40 max-sm:h-80 px-12 gap-16 flex max-sm:flex-col justify-between max-sm:justify-center items-center"
     >
       <div className="flex items-center gap-6">

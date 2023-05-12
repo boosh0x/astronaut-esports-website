@@ -25,17 +25,16 @@ module.exports = {
   plugins: [
     plugin(function ({ addUtilities }) {
       addUtilities({
-        ".gradient-text": {
-          color: "transparent",
-          backgroundClip: "text",
-          backgroundImage: "linear-gradient(to right, #333AE3, #5D27E3)",
-        },
         ".scrollbar-hidden": {
           "-ms-overflow-style": "none",
           "scrollbar-width": "none",
           "&::-webkit-scrollbar": {
             display: "none",
           },
+        },
+        ".text-outline": {
+          "text-stroke": "4px black",
+          "-webkit-text-stroke": "4px black",
         },
       });
     }),

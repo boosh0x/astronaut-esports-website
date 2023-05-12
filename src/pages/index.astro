@@ -18,21 +18,16 @@ export const { schedule, teams, news } = fetchCache();
     <Background client:load />
     <JumpIn client:load />
   </div>
-  <div class="relative w-full h-screen pointer-events-none //mb-10"></div>
+  <div class="relative w-full h-screen pointer-events-none mb-12">
+    <div class="bg-white w-16 h-16 absolute -bottom-20 -left-8 rotate-45"></div>
+  </div>
   <div
-    id="content"
-    class="relative cut-corners bg-white z-10 //overflow-hidden max-sm:p-8 p-16 flex flex-col gap-16 max-sm:gap-8 w-full"
+    class="relative cut-corners-xl bg-white z-10 max-sm:p-8 p-16 flex flex-col gap-16 max-sm:gap-8 w-full"
   >
-    <!-- <div class="bg-white w-20 h-20 absolute -top-6 -left-8 rotate-[30deg]">
-    </div>
-    <div class="bg-black w-20 h-20 absolute -top-14 -right-6 rotate-[30deg]">
-    </div>
-    <div class="bg-black w-20 h-20 absolute -bottom-14 -left-8 rotate-[30deg]">
-    </div>
-    <div class="bg-white w-20 h-20 absolute -bottom-6 -right-8 rotate-[30deg]">
-    </div> -->
     <Content client:load teams={teams} schedule={schedule} news={news} />
   </div>
-  <div class="relative h-40 max-sm:h-80"></div>
+  <div class="relative h-40 max-sm:h-80 overflow-hidden">
+    <div class="bg-white w-16 h-16 absolute -top-8 -right-8 rotate-45"></div>
+  </div>
   <Footer client:idle />
 </Layout>

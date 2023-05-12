@@ -1,0 +1,14 @@
+---
+const { href } = Astro.props;
+---
+
+<a id={href} href={href} draggable={false} class="relative">
+  <p class="absolute top-0 text-xl text-black text-outline">
+    <slot />
+  </p>
+  <p
+    class="relative z-50 text-xl text-white hover:text-transparent transition-colors duration-300 bg-clip-text bg-gradient-to-br from-blue to-purple"
+  >
+    <slot />
+  </p>
+</a>

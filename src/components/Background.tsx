@@ -7,7 +7,22 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { Suspense } from "react";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 
-function Quest(props: { hide: boolean }) {
+function Quest() {
+  const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > window.innerHeight) {
+        setScrolledPastViewport(true);
+      } else setScrolledPastViewport(false);
+    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const gltf = useLoader(GLTFLoader, "/quest/scene.gltf");
 
   useFrame(() => {
@@ -16,7 +31,7 @@ function Quest(props: { hide: boolean }) {
 
   return (
     <primitive
-      visible={props.hide}
+      visible={!scrolledPastViewport}
       object={gltf.scene}
       rotation={[-0.75, 0.75, 0.75]}
     />
@@ -82,7 +97,22 @@ function Stars() {
   );
 }
 
-function AstronautEsports(props: { hide: boolean }) {
+function AstronautEsports() {
+  const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > window.innerHeight) {
+        setScrolledPastViewport(true);
+      } else setScrolledPastViewport(false);
+    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const font = useLoader(FontLoader, "/fonts/XXIX.json");
 
   const textGeometry = new TextGeometry("Astronaut Esports", {
@@ -101,27 +131,10 @@ function AstronautEsports(props: { hide: boolean }) {
     />
   );
 
-  return <group visible={props.hide}>{textMesh}</group>;
+  return <group visible={!scrolledPastViewport}>{textMesh}</group>;
 }
 
 export default function Background() {
-  const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
-
-  useEffect(() => {
-    function handleScroll() {
-      const scrolledDistance = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      if (scrolledDistance > viewportHeight) {
-        setScrolledPastViewport(true);
-      } else setScrolledPastViewport(false);
-    }
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <Canvas className="absolute top-0 left-0 w-full h-screen">
       <ambientLight intensity={0.1} />
@@ -134,8 +147,8 @@ export default function Background() {
       />
       <Stars />
       <Suspense>
-        <Quest hide={!scrolledPastViewport} />
-        <AstronautEsports hide={!scrolledPastViewport} />
+        <Quest />
+        <AstronautEsports />
       </Suspense>
     </Canvas>
   );
