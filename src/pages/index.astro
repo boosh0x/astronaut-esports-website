@@ -6,17 +6,18 @@ import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import fetchCache from "../utils/fetchCache";
 import Footer from "../components/Footer";
+import Title from "../components/Title";
 
 export const { schedule, teams, news } = fetchCache();
 ---
 
 <Layout title="Astronaut Esports">
-  <Header />
   <div
     class="fixed top-0 w-full flex items-center justify-center h-screen bg-black"
   >
     <Background client:load />
     <JumpIn client:load />
+    <Title client:load />
   </div>
   <div class="relative w-full h-screen pointer-events-none mb-12">
     <div class="bg-white w-16 h-16 absolute -bottom-20 -left-8 rotate-45"></div>

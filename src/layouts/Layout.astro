@@ -1,5 +1,6 @@
 ---
 import fetchCache from "../utils/fetchCache";
+import Header from "../components/Header.astro";
 
 type Props = {
   title: string;
@@ -7,7 +8,7 @@ type Props = {
 
 const { title } = Astro.props;
 
-export const { metadata } = fetchCache();
+export const { metadata, schedule } = fetchCache();
 
 export const socials = {
   twitter: "https://twitter.com/nounsesports",
@@ -37,6 +38,8 @@ export const navigation = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="black" />
+
     <link rel="icon" type="image/png" href="/logo.png" />
     <link
       rel="preload"
@@ -117,6 +120,9 @@ export const navigation = [
     </style>
   </head>
   <body class="font-roboto-condensed overflow-x-hidden">
-    <slot />
+    <Header />
+    <div style={{ marginTop: metadata.banner ? "-2.25rem" : "" }}>
+      <slot />
+    </div>
   </body>
 </html>

@@ -3,9 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { Suspense } from "react";
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 
 function Quest() {
   const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
@@ -97,42 +95,42 @@ function Stars() {
   );
 }
 
-function AstronautEsports() {
-  const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
+// function AstronautEsports() {
+//   const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
 
-  useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > window.innerHeight) {
-        setScrolledPastViewport(true);
-      } else setScrolledPastViewport(false);
-    }
-    window.addEventListener("scroll", handleScroll);
+//   useEffect(() => {
+//     function handleScroll() {
+//       if (window.scrollY > window.innerHeight) {
+//         setScrolledPastViewport(true);
+//       } else setScrolledPastViewport(false);
+//     }
+//     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//     };
+//   }, []);
 
-  const font = useLoader(FontLoader, "/fonts/XXIX.json");
+//   // const font = useLoader(FontLoader, "/fonts/XXIX.json");
 
-  const textGeometry = new TextGeometry("Astronaut Esports", {
-    font: font,
-    size: 0.5,
-    height: 0.02,
-  });
+//   const textGeometry = new TextGeometry("Astronaut Esports", {
+//     font: font,
+//     size: 0.5,
+//     height: 0.02,
+//   });
 
-  // Create a mesh with the text geometry
-  const textMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-  const textMesh = (
-    <mesh
-      geometry={textGeometry}
-      material={textMaterial}
-      position={[-3.8, -0.25, 1.5]}
-    />
-  );
+//   // Create a mesh with the text geometry
+//   const textMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+//   const textMesh = (
+//     <mesh
+//       geometry={textGeometry}
+//       material={textMaterial}
+//       position={[-3.8, -0.25, 1.5]}
+//     />
+//   );
 
-  return <group visible={!scrolledPastViewport}>{textMesh}</group>;
-}
+//   return <group visible={!scrolledPastViewport}>{textMesh}</group>;
+// }
 
 export default function Background() {
   return (
@@ -148,7 +146,7 @@ export default function Background() {
       <Stars />
       <Suspense>
         <Quest />
-        <AstronautEsports />
+        {/* <AstronautEsports /> */}
       </Suspense>
     </Canvas>
   );

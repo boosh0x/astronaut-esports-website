@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import Button from "./Button";
-import Socials from "./Socials";
 
-export default function JumpIn() {
+export default function Title() {
   const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
 
   useEffect(() => {
@@ -20,12 +18,11 @@ export default function JumpIn() {
   }, []);
 
   return (
-    <div
+    <h1
       style={{ display: scrolledPastViewport ? "none" : "flex" }}
-      className="z-10 absolute bottom-32 flex flex-col items-center gap-8"
+      className="font-xxix text-[8rem] max-2xl:text-8xl max-xl:text-6xl max-[500px]:text-5xl max-[350px]:text-4xl px-8 text-center absolute text-white"
     >
-      <Button href="https://hyperfy.io/astronaut">Jump in!</Button>
-      <Socials />
-    </div>
+      Astronaut Esports
+    </h1>
   );
 }

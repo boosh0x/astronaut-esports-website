@@ -1,0 +1,28 @@
+---
+import { metadata, schedule } from "../layouts/Layout.astro";
+
+let start;
+let end;
+let live;
+
+if (schedule.length > 0) {
+  start = new Date(schedule[0].start.dateTime);
+  end = new Date(schedule[0].end?.dateTime || Date.now() + 60 * 60 * 1000);
+  live = Date.now() > start.getTime() && Date.now() < end.getTime();
+}
+---
+
+<a
+  href={live ? schedule[0].htmlLink : metadata.banner.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="relative z-20 h-9 bg-gradient-to-r from-blue to-purple hover:brightness-[85%] transition-all text-white text-sm font-semibold w-full whitespace-nowrap flex items-center justify-center"
+>
+  {live ? <img src="/icons/dot.svg" class="mr-2 w-2 animate-pulse" /> : ""}
+  {
+    live
+      ? `${schedule[0].summary.split("] ")[1]} is happening now`
+      : metadata.banner.message
+  }
+  <img src="/icons/arrow2.svg" class="ml-2 w-3" />
+</a>

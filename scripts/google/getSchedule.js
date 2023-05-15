@@ -13,5 +13,47 @@ export default async function getSchedule() {
   );
   const calendar = await response.json();
 
-  return calendar.items || [];
+  // return calendar.items || [];
+  return [
+    {
+      id: "abc",
+      htmlLink: "https://www.google.com",
+      summary: "[SF] EVO 2023",
+      start: {
+        dateTime: "2023-05-28T09:00:00-10:00",
+      },
+    },
+    {
+      id: "abc",
+      htmlLink: "https://www.google.com",
+      summary: "[SF] EVO 2023",
+      start: {
+        dateTime: "2023-05-28T09:00:00-10:00",
+      },
+    },
+    {
+      id: "abc",
+      htmlLink: "https://www.google.com",
+      summary: "[SF] EVO 2023",
+      start: {
+        dateTime: "2023-05-28T09:00:00-10:00",
+      },
+    },
+    {
+      id: "abc",
+      htmlLink: "https://www.google.com",
+      summary: "[SF] EVO 2023",
+      start: {
+        dateTime: "2023-05-28T09:00:00-10:00",
+      },
+    },
+    {
+      id: "abc",
+      htmlLink: "https://www.google.com",
+      summary: "[SF] EVO 2023",
+      start: {
+        dateTime: "2023-05-28T09:00:00-10:00",
+      },
+    },
+  ];
 }

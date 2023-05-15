@@ -19,7 +19,11 @@ export default function Content(props: {
         setSelectedTeam={setSelectedTeam}
       />
       <News news={props.news} teams={props.teams} selectedTeam={selectedTeam} />
-      <Schedule schedule={props.schedule} selectedTeam={selectedTeam} />
+      <Schedule
+        schedule={props.schedule}
+        selectedTeam={selectedTeam}
+        teams={props.teams}
+      />
     </>
   );
 }
