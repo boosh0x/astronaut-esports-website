@@ -7,6 +7,12 @@ export type Team = {
   image: string;
 };
 
+export type Partner = {
+  name: string;
+  logo: string;
+  url: string;
+};
+
 export type Event = {
   id: string;
   status: string;
@@ -24,13 +30,23 @@ export type Event = {
   };
 };
 
-export type Article = { id: string; title: string; image: string; url: string };
+export type Article = {
+  id: string;
+  title: string;
+  image: string;
+  url: string;
+  game: string;
+};
 
 export type Cache = {
   schedule: Event[];
   teams: Team[];
-  metadata: { banner: { message: string; url: string } };
+  metadata: {
+    banner: { message: string; url: string };
+    tagline: string;
+  };
   news: Article[];
+  partners: Partner[];
 };
 
 export default function fetchCache() {

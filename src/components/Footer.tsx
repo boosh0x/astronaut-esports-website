@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Button from "./Button";
 import Socials from "./Socials";
+import type { Cache } from "../utils/fetchCache";
 
-export default function Footer() {
+export default function Footer(props: { metadata: Cache["metadata"] }) {
   const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Footer() {
             Astronaut Esports
           </p>
           <p className="text-grey text-lg -ml-2 max-sm:text-base">
-            Space-Bound Champions
+            {props.metadata.tagline}
           </p>
         </div>
       </div>

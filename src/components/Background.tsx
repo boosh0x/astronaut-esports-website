@@ -21,17 +21,18 @@ function Quest() {
     };
   }, []);
 
-  const gltf = useLoader(GLTFLoader, "/quest/scene.gltf");
+  const gltf = useLoader(GLTFLoader, "/astrogirl.glb");
 
   useFrame(() => {
-    gltf.scene.rotation.y += 0.0002;
+    gltf.scene.rotation.y += 0.002;
   });
 
   return (
     <primitive
       visible={!scrolledPastViewport}
       object={gltf.scene}
-      rotation={[-0.75, 0.75, 0.75]}
+      rotation={[0.5, 0, 0]}
+      position={[0, -0.85, 2]}
     />
   );
 }

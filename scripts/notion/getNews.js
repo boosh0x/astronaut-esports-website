@@ -18,7 +18,7 @@ export default async function getNews(notion) {
       url: result.properties.URL?.url,
     });
 
-    articles.push(article);
+    articles.push({ ...article, game: result.properties.Game.relation[0]?.id });
   }
 
   return articles;

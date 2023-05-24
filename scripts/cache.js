@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 
 import dotenv from "dotenv";
+import getPartners from "./notion/getPartners.js";
 
 dotenv.config();
 
@@ -15,11 +16,12 @@ const notion = new Client({
   auth: process.env.NOTION,
 });
 
-const [schedule, metadata, teams, news] = await Promise.all([
+const [schedule, metadata, teams, news, partners] = await Promise.all([
   getSchedule(),
   getMetadata(notion),
   getTeams(notion),
   getNews(notion),
+  getPartners(notion),
 ]);
 
 const output = {
@@ -27,6 +29,7 @@ const output = {
   metadata,
   teams,
   news,
+  partners,
 };
 
 fs.writeFileSync(

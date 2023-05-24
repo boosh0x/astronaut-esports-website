@@ -18,11 +18,18 @@ export default function News(props: {
         <Button href="https://paragraph.xyz/">Read more</Button>
       </div>
       <div className="grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:flex max-sm:overflow-x-scroll max-sm:-mx-8 gap-8">
-        {props.news.reverse().map((article) => (
-          <Article key={article.id} image={article.image} href={article.url}>
-            {article.title}
-          </Article>
-        ))}
+        {props.news
+          .reverse()
+          .filter((article) =>
+            props.teams.find((team) =>
+              props.selectedTeam === 0 ? true : team.id === article.game
+            )
+          )
+          .map((article) => (
+            <Article key={article.id} image={article.image} href={article.url}>
+              {article.title}
+            </Article>
+          ))}
       </div>
     </div>
   );

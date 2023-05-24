@@ -1,3 +1,4 @@
+import { schedule } from "../layouts/Layout.astro";
 import type { Event, Team } from "../utils/fetchCache";
 import Button from "./Button";
 
@@ -6,7 +7,6 @@ export default function Schedule(props: {
   selectedTeam: number;
   teams: Team[];
 }) {
-  console.log(props.schedule);
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-center justify-between">
@@ -20,20 +20,31 @@ export default function Schedule(props: {
           See more
         </Button>
       </div>
-      <div className="grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:flex max-sm:overflow-x-scroll max-sm:-mx-8 gap-8">
-        {props.schedule.map((event) => (
-          <Event event={event} teams={props.teams} />
-        ))}
-      </div>
+      {schedule.length > 0 ? (
+        <div className="grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:flex max-sm:overflow-x-scroll max-sm:-mx-8 gap-8">
+          {props.schedule
+            .filter((event) =>
+              props.selectedTeam === 0
+                ? true
+                : props.teams.find((team) =>
+                    team.name.includes(
+                      event.summary?.split("]")[0].replace("[", "")
+                    )
+                  )
+            )
+            .map((event) => (
+              <Event event={event} teams={props.teams} />
+            ))}
+        </div>
+      ) : (
+        <p className="text-grey text-lg">There are no upcoming events</p>
+      )}
     </div>
   );
 }
 
 function Event(props: { event: Event; teams: Team[] }) {
-  const type = props.event.summary
-    ?.split(" ")[0]
-    .replace("[", "")
-    .replace("]", "");
+  const type = props.event.summary?.split("]")[0].replace("[", "");
 
   const game = props.teams.find((team) => team.name.includes(type));
 
@@ -62,7 +73,7 @@ function Event(props: { event: Event; teams: Team[] }) {
         })}`}
         </p>
         {props.event.summary?.replace(`[${type}]`, "")}
-        <div className="text-xs bg-blue font-roboto-condensed font-semibold px-2 py-1 rounded-full w-min mb-2">
+        <div className="text-xs whitespace-nowrap bg-blue font-roboto-condensed font-semibold px-2 py-1 rounded-full w-min mb-2">
           {type}
         </div>
       </div>

@@ -2,13 +2,12 @@
 import Background from "../components/Background";
 import JumpIn from "../components/JumpIn";
 import Content from "../components/Content";
-import Header from "../components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import fetchCache from "../utils/fetchCache";
 import Footer from "../components/Footer";
 import Title from "../components/Title";
 
-export const { schedule, teams, news } = fetchCache();
+export const { schedule, teams, news, metadata, partners } = fetchCache();
 ---
 
 <Layout title="Astronaut Esports">
@@ -25,10 +24,16 @@ export const { schedule, teams, news } = fetchCache();
   <div
     class="relative cut-corners-xl bg-white z-10 max-sm:p-8 p-16 flex flex-col gap-16 max-sm:gap-8 w-full"
   >
-    <Content client:load teams={teams} schedule={schedule} news={news} />
+    <Content
+      client:load
+      teams={teams}
+      schedule={schedule}
+      news={news}
+      partners={partners}
+    />
   </div>
   <div class="relative h-40 max-sm:h-80 overflow-hidden">
     <div class="bg-white w-16 h-16 absolute -top-8 -right-8 rotate-45"></div>
   </div>
-  <Footer client:idle />
+  <Footer client:idle metadata={metadata} />
 </Layout>

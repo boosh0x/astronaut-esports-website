@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Teams from "./Teams";
-import type { Article, Event, Team } from "../utils/fetchCache";
+import type { Article, Event, Partner, Team } from "../utils/fetchCache";
 import News from "./News";
 import Schedule from "./Schedule";
+import Partners from "./Partners";
 
 export default function Content(props: {
   teams: Team[];
   news: Article[];
   schedule: Event[];
+  partners: Partner[];
 }) {
   const [selectedTeam, setSelectedTeam] = useState(0);
 
@@ -24,6 +26,7 @@ export default function Content(props: {
         selectedTeam={selectedTeam}
         teams={props.teams}
       />
+      <Partners partners={props.partners} />
     </>
   );
 }
