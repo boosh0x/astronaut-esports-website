@@ -24,7 +24,7 @@ export default function JumpIn() {
       style={{ display: scrolledPastViewport ? "none" : "flex" }}
       className="z-10 absolute bottom-32 flex flex-col items-center gap-8"
     >
-      <Button href="https://hyperfy.io/astronaut">Jump in!</Button>
+      <Button href="https://hyperfy.io/astronaut">Blast Off!</Button>
       <Socials />
     </div>
   );
