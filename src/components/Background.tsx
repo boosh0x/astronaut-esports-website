@@ -5,7 +5,7 @@ import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { Suspense } from "react";
 
-function Quest() {
+function Model() {
   const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
 
   useEffect(() => {
@@ -96,43 +96,6 @@ function Stars() {
   );
 }
 
-// function AstronautEsports() {
-//   const [scrolledPastViewport, setScrolledPastViewport] = useState(false);
-
-//   useEffect(() => {
-//     function handleScroll() {
-//       if (window.scrollY > window.innerHeight) {
-//         setScrolledPastViewport(true);
-//       } else setScrolledPastViewport(false);
-//     }
-//     window.addEventListener("scroll", handleScroll);
-
-//     return () => {
-//       window.removeEventListener("scroll", handleScroll);
-//     };
-//   }, []);
-
-//   // const font = useLoader(FontLoader, "/fonts/XXIX.json");
-
-//   const textGeometry = new TextGeometry("Astronaut Esports", {
-//     font: font,
-//     size: 0.5,
-//     height: 0.02,
-//   });
-
-//   // Create a mesh with the text geometry
-//   const textMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
-//   const textMesh = (
-//     <mesh
-//       geometry={textGeometry}
-//       material={textMaterial}
-//       position={[-3.8, -0.25, 1.5]}
-//     />
-//   );
-
-//   return <group visible={!scrolledPastViewport}>{textMesh}</group>;
-// }
-
 export default function Background() {
   return (
     <Canvas className="absolute top-0 left-0 w-full h-screen">
@@ -146,8 +109,7 @@ export default function Background() {
       />
       <Stars />
       <Suspense>
-        <Quest />
-        {/* <AstronautEsports /> */}
+        <Model />
       </Suspense>
     </Canvas>
   );

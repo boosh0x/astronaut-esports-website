@@ -1,4 +1,3 @@
-import { schedule } from "../layouts/Layout.astro";
 import type { Event, Team } from "../utils/fetchCache";
 import Button from "./Button";
 
@@ -20,20 +19,25 @@ export default function Schedule(props: {
           See more
         </Button>
       </div>
-      {schedule.length > 0 ? (
+      {props.schedule.length > 0 ? (
         <div className="grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:flex max-sm:overflow-x-scroll max-sm:-mx-8 gap-8">
           {props.schedule
             .filter((event) =>
               props.selectedTeam === 0
                 ? true
                 : props.teams.find((team) =>
-                    team.name.includes(
-                      event.summary?.split("]")[0].replace("[", "")
-                    )
+                    team.name
+                      .toLowerCase()
+                      .includes(
+                        event.summary
+                          ?.split("]")[0]
+                          .replace("[", "")
+                          .toLowerCase()
+                      )
                   )
             )
             .map((event) => (
-              <Event event={event} teams={props.teams} />
+              <Event key={event.htmlLink} event={event} teams={props.teams} />
             ))}
         </div>
       ) : (
@@ -46,23 +50,24 @@ export default function Schedule(props: {
 function Event(props: { event: Event; teams: Team[] }) {
   const type = props.event.summary?.split("]")[0].replace("[", "");
 
-  const game = props.teams.find((team) => team.name.includes(type));
+  const game = props.teams.find((game) =>
+    game.name.toLowerCase().includes(type.toLowerCase())
+  );
 
   const date = new Date(props.event.start.dateTime);
 
   return (
     <a
-      key={props.event.htmlLink}
       href={props.event.htmlLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative cursor-pointer aspect-video max-sm:first:pl-8 max-sm:last:pr-8"
+      className="relative cursor-pointer aspect-video max-sm:first:pl-8 max-sm:last:pr-8 "
       draggable={false}
     >
       <div className="absolute max-sm:hidden cut-corners-lg w-full h-full bg-gradient-to-r from-blue to-purple"></div>
       <div
         style={{ backgroundImage: `url(${game?.image || "/space.png"})` }}
-        className="relative cut-corners-lg max-sm:w-[calc(100vw_-_64px)] h-full bg-center bg-cover select-none font-stargaze text-white hover:translate-x-2 hover:-translate-y-2 duration-300 p-6 text-xl max-2xl:text-base max-2xl:leading-snug bg-white leading-tight flex flex-col-reverse"
+        className="relative cut-corners-lg max-sm:w-[calc(100vw_-_64px)] h-full bg-center bg-cover select-none font-stargaze text-white hover:translate-x-2 hover:-translate-y-2 duration-300 p-6 text-xl max-2xl:text-base max-2xl:leading-snug bg-white leading-tight flex flex-col-reverse shadow-[inset_-5px_-5px_50px_black,inset_5px_5px_50px_black]"
       >
         <p className="text-grey text-base font-roboto-condensed">
           {`${date.toLocaleDateString([], {

@@ -38,7 +38,6 @@ export default function News(props: {
 function Article(props: { image: string; children: string; href: string }) {
   return (
     <a
-      key={props.href}
       href={props.href}
       target="_blank"
       rel="noopener noreferrer"
@@ -48,7 +47,7 @@ function Article(props: { image: string; children: string; href: string }) {
       <div className="absolute max-sm:hidden cut-corners-lg w-full h-full bg-gradient-to-r from-blue to-purple"></div>
       <div
         style={{ backgroundImage: `url(${props.image})` }}
-        className="relative cut-corners-lg max-sm:w-[calc(100vw_-_64px)] h-full bg-center bg-cover select-none font-stargaze text-white hover:translate-x-2 hover:-translate-y-2 duration-300 p-6 text-xl max-2xl:text-base max-2xl:leading-snug bg-white leading-tight bg-white leading-tight flex flex-col-reverse"
+        className="relative cut-corners-lg max-sm:w-[calc(100vw_-_64px)] h-full bg-center bg-cover select-none font-stargaze text-white hover:translate-x-2 hover:-translate-y-2 duration-300 p-6 text-xl max-2xl:text-base max-2xl:leading-snug bg-white leading-tight flex flex-col-reverse shadow-[inset_-2px_-2px_50px_black,inset_2px_2px_50px_black]"
       >
         {props.children}
       </div>
