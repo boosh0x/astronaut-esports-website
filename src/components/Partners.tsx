@@ -9,9 +9,9 @@ export default function Partners(props: { partners: Partner[] }) {
             PARTNERS
           </h2>
         </div>
-        <div className="flex gap-8 overflow-x-scroll max-sm:-mx-8 flex-wrap max-sm:flex-nowrap">
+        <div className="flex gap-8 scrollbar-hidden max-sm:-mx-8 flex-wrap max-sm:flex-nowrap">
           {props.partners.map((partner) => (
-            <a href={partner.url}>
+            <a href={partner.url} key={partner.name}>
               <img
                 src={partner.logo}
                 alt={partner.name}
@@ -23,4 +23,6 @@ export default function Partners(props: { partners: Partner[] }) {
       </div>
     );
   }
+
+  return <></>;
 }
