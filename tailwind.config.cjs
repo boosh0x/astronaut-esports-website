@@ -30,6 +30,8 @@ module.exports = {
           "scrollbar-width": "none",
           "&::-webkit-scrollbar": {
             display: "none",
+            width: 0,
+            height: 0,
           },
         },
         ".text-outline": {
