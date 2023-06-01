@@ -11,7 +11,7 @@ export default function Socials() {
       </a>
       <a
         className="w-8 h-8 flex items-center"
-        href="https://discord.gg/4YjJkZw"
+        href="https://discord.gg/9SYPNebu9Z"
         target="_blank"
         rel="noreferrer"
       >
@@ -19,7 +19,7 @@ export default function Socials() {
       </a>
       <a
         className="w-8 h-8 flex items-center"
-        href="https://www.youtube.com/channel/UCJj0H2Zn0y1tjH7TzFmJj0g"
+        href="https://www.youtube.com/@AstronautEsports"
         target="_blank"
         rel="noreferrer"
       >
