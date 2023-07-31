@@ -21,7 +21,7 @@ function Model() {
     };
   }, []);
 
-  const gltf = useLoader(GLTFLoader, "/Astronaut.glb");
+  const gltf = useLoader(GLTFLoader, "/astronaut.glb");
 
   useFrame(() => {
     gltf.scene.rotation.y += 0.002;
