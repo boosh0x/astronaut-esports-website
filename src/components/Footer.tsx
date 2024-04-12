@@ -43,7 +43,7 @@ export default function Footer(props: { metadata: Cache["metadata"] }) {
       </div>
       <div className="w-full flex items-center justify-center">
         <div className="flex items-center gap-16 max-sm:gap-8 max-sm:justify-between">
-          <Button href="">Newsletter</Button>
+          <Button href="https://mirror.xyz/astronautesports.eth">Newsletter</Button>
           <Socials />
         </div>
       </div>
